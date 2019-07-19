@@ -25,7 +25,16 @@ class Dataset():
         'basic': {
             'df': pd.DataFrame(data={'name': ['Jim', 'Jane', 'Jill'], 'sex': ['male', 'female', 'female']}),
             'load_type': 'simple',
-            'etl': []
+            'etl': [
+            {
+                'function': partial(pd.DataFrame.rename),
+                'payload': {'columns': {'name': 'first_name'}}
+            },
+            {
+                'function': partial(pd.DataFrame.reset_index),
+                'payload': None
+            },
+        ]
         }
     }
 
