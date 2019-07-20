@@ -3,7 +3,9 @@ import requests
 from functools import partial
 
 class Dataset():
-    #class variables
+    
+    """The Dataset is the container for infomation about your dataset as well as the data at different steps in the etl process."""
+
     samples = {
         'waterloo': {
             'df': None,
@@ -41,10 +43,17 @@ class Dataset():
     datasource = samples
 
     def __init__(self, name='basic'):
-        self.published_df = None,
-        self.queued_df = None,
-        self.url = None,
-        self.type = None,
+
+        """Here's your chance to name your dataset. If you choose not to choose, you've still made a choice.
+
+        Args:
+            name (str): Name your datset. If you leave it blank, or if you use a name from the samples dictionary, everything will get setup for you.
+        """
+
+        self.published_df = None, #: This is where a df will be if etl is successful
+        self.queued_df = None, #: This is where df are pushed before etl is run.
+        #self.url = None,
+        #self.type = None,
         self.dataset_name = name
     
     def load(self):
